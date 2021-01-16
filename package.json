@@ -1,0 +1,24 @@
+{
+  "name": "snake",
+  "version": "1.0.0",
+  "description": "Rebuilding my snake game in React",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc src/components/Menu.tsx src/components/App.tsx src/components/Grid.tsx src/components/Snake.tsx src/components/Tile.tsx src/direction.ts src/grid.ts src/snake.ts --jsx react --esModuleInterop --watch --outdir compiledJS",
+    "test": "watchify compiledJS/components/Menu.js compiledJS/components/App.js compiledJS/components/Grid.js compiledJS/components/Snake.js compiledJS/components/Tile.js compiledJS/direction.js compiledJS/grid.js compiledJS/snake.js -o devJS/bundle.js",
+    "build": "browserify compiledJS/components/Menu.js compiledJS/components/App.js compiledJS/components/Grid.js compiledJS/components/Snake.js compiledJS/components/Tile.js compiledJS/direction.js compiledJS/grid.js compiledJS/snake.js -g [ envify --NODE_ENV production ] -g uglifyify | terser --compress --mangle > productionJS/bundle.js"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "envify": "^4.1.0",
+    "terser": "^5.5.1",
+    "uglifyify": "^5.0.2"
+  },
+  "author": "Mark Lee",
+  "license": "MIT"
+}
